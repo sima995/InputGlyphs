@@ -175,7 +175,11 @@ namespace InputGlyphs.Display
             }
 
             var playerInputAction = playerInput.actions.FindAction(InputActionReference.action.id);
-            if (InputLayoutPathUtility.TryGetActionBindingPath(playerInputAction, PlayerInput.currentControlScheme, _pathBuffer))
+            
+            bool pathExists = InputLayoutPathUtility.TryGetActionBindingPath(playerInputAction, PlayerInput.currentControlScheme, _pathBuffer
+            Image.enabled = pathExists;
+            
+            if (pathExists))
             {
                 if (DisplayGlyphTextureGenerator.GenerateGlyphTexture(_texture, devices, _pathBuffer, GlyphsLayoutData))
                 {
